@@ -1,0 +1,34 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Build files
+/dist
+/build
+
+# Cloud-specific files
+app.yaml
+.gcloudignore
+
+# Editor & IDE settings
+.vscode/
+.idea/
+*.iml

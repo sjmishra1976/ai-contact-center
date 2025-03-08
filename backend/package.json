@@ -1,0 +1,29 @@
+{
+    "name": "ai-contact-center",
+    "version": "1.0.0",
+    "description": "AI-powered contact center with Dialogflow, Twilio integration, and WebSocket support",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "build": "docker build -t ai-contact-center .",
+      "deploy:gcp": "gcloud app deploy"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "body-parser": "^1.20.2",
+      "socket.io": "^4.7.2",
+      "dialogflow": "^1.2.0",
+      "twilio": "^4.17.1"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.1"
+    },
+    "engines": {
+      "node": ">=14"
+    },
+    "keywords": ["AI", "contact-center", "Dialogflow", "Twilio", "WebSocket"],
+    "author": "Santoshkumar Mishra",
+    "license": "MIT"
+  }
+  

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Contact Center</title>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="clientapp.js"></script>
+</head>
+<body>
+    <h1>Welcome to AI Contact Center</h1>
+    <div id="chat-container">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+        <div id="chat-box"></div>
+    </div>
+</body>
+</html>
