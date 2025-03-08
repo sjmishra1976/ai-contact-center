@@ -1,13 +1,13 @@
 # ai-contact-center
-📌 Key Features in the Repo
-✅ AI Chatbot with Dialogflow CX – Handles customer queries
-✅ CRM Integration (Salesforce/Zendesk) – Retrieves order details
-✅ Live Agent Escalation (Twilio Flex) – Transfers calls/chats when needed
-✅ Omnichannel Support – Works on Web, WhatsApp, IVR
-✅ Cloud Deployment Scripts – Deploy on AWS/GCP in 
+## 📌 Key Features in the Repo
+### ✅ AI Chatbot with Dialogflow CX – Handles customer queries
+### ✅ CRM Integration (Salesforce/Zendesk) – Retrieves order details
+### ✅ Live Agent Escalation (Twilio Flex) – Transfers calls/chats when needed
+### ✅ Omnichannel Support – Works on Web, WhatsApp, IVR
+### ✅ Cloud Deployment Scripts – Deploy on AWS/GCP in 
 
 
- Technical Architecture Overview
+ ## Technical Architecture Overview
 🛠️ Key Components
 User Interaction Layer (Omnichannel)
 
@@ -36,7 +36,7 @@ AI Model Retraining (Improves over time using real interactions)
 
 
 
-📞 User Channels (Omnichannel)  
+## 📞 User Channels (Omnichannel)  
 -------------------------------------------  
 🌐 Website  📱 Mobile App  💬 WhatsApp  ✉️ Email  📞 IVR  
     │  
