@@ -94,3 +94,25 @@ AI Model Retraining (Improves over time using real interactions)
    - Ensure WebSocket is enabled on the hosting service.
    - Serve static files from the 'public' directory.
 
+7. CI/CD Pieline using github action (under .githob/workflows/ci-cd-pipeline.ym)
+   - Build Job: Checks out the code. Installs Node.js and dependencies.Runs linting and tests.Builds a Docker image tagged with the current Git SHA.
+   - Deploy Job: Authenticates with GCP using the GitHub secret GCP_CREDENTIALS. Deploys the app to Google Cloud App Engine.
+   - Notify Job:Sends a Telegram notification on successful deployment.Uses GitHub Secrets for security.
+
+8. CI/CD Pipeline using Jenkins ( root .Jenkinsfile) to GKE
+   -  The Docker image is tagged with the GCP project ID and GKE-compatible path:gcr.io/${GCP_PROJECT_ID}/ai-contact-center:${env.BUILD_NUMBER}
+   -  Uses gcloud container clusters get-credentials to connect to your GKE cluster.
+   -  Applies Kubernetes manifests (k8s/deployment.yaml and k8s/service.yaml).
+   -  Runs kubectl rollout status to verify the deployment is successful.
+
+9. Jenkins Configurations
+   - Install Plugins: Kubernetes CLI, Google Cloud SDK, Pipeline, Docker Pipeline
+   - Jenkins Credentials: Go to Manage Jenkins > Credentials > System > Global credentials > Add credentials
+   - Add GCP_PROJECT_ID → Your GCP project ID. GCP_SA_KEY → GCP service account key JSON.
+   - Jenkins Docker Permissions: Ensure the Jenkins agent has Docker permissions. Add Jenkins to the Docker group:sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+
+     
+
+
+
