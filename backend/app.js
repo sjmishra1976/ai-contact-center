@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../frontend/public")));
 
 // WebSocket connection
 io.on("connection", (socket) => {
