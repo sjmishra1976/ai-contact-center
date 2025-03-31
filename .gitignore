@@ -15,11 +15,6 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Docker
-docker-compose.yml
-Dockerfile
-.dockerignore
-
 # Build files
 /dist
 /build

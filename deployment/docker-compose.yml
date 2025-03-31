@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  rasa:
+    build:
+      context: .
+      dockerfile: ../rasa/Dockerfile.rasa
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    networks:
+      - ai_network
+
+  rasa-actions:
+    build:
+      context: .
+      dockerfile: ../rasa/Dockerfile.actions
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./actions:/app/actions
+    networks:
+      - ai_network
+
+  express:
+    build:
+      context: .
+      dockerfile: ../backend/Dockerfile.express
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - ai_network
+    depends_on:
+      - rasa
+      - rasa-actions
+
+networks:
+  ai_network:
+    driver: bridge
