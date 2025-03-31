@@ -2,12 +2,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dialogflowHandler = require("./dialogflowHandler");
-const twilioHandler = require("./twilioHandler");
+//const twilioHandler = require("./twilioHandler");
 const crmIntegration = require("./crmIntegration");
 const path = require("path");
 const http = require("http");
 const socketIo = require("socket.io");
 const dotenv = require("dotenv");
+const axios = require("axios");
 
 // Load environment variables
 dotenv.config();
@@ -28,22 +29,45 @@ io.on("connection", (socket) => {
     });
 });
 
+
+
+// Rasa Fulfillment Endpoint
+app.post("/webhook", async (req, res) => {
+    try {
+        const message = req.body.query;
+        const rasaResponse = await axios.post("http://localhost:5005/webhooks/rest/webhook", {
+            sender: "user",
+            message: message
+        });
+
+        const responseText = rasaResponse.data.map((msg) => msg.text).join("\n");
+        io.emit("bot_response", responseText);
+        res.json({ response: responseText });
+
+    } catch (error) {
+        console.error("Error communicating with Rasa:", error);
+        res.status(500).send("Failed to communicate with Rasa");
+    }
+});
+
+
+
 // Dialogflow Fulfillment Endpoint
-app.post("/webhook", (req, res) => {
+app.post("/webhook-dialogflow", (req, res) => {
     dialogflowHandler.handleRequest(req, res, (responseText) => {
         io.emit("bot_response", responseText);
     });
 });
 
 // Twilio Agent Escalation Endpoint
-app.post("/escalate", async (req, res) => {
+/*app.post("/escalate", async (req, res) => {
     try {
         await twilioHandler.escalateToAgent(req, res);
     } catch (error) {
         console.error("Error escalating to agent:", error);
         res.status(500).send({ error: "Failed to escalate to agent" });
     }
-});
+});*/
 
 // CRM Order Status Endpoint
 app.post("/get-order-status", async (req, res) => {

@@ -32,3 +32,8 @@ app.yaml
 .vscode/
 .idea/
 *.iml
+
+#RASA
+rasa_env
+.rasa
+

@@ -1,0 +1,13 @@
+# Use official Node.js LTS image
+FROM node:14
+# Set working directory
+WORKDIR /app
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+# Copy the entire app (including public static assets)
+COPY . .
+# Expose port 3000 for the server
+EXPOSE 3000
+# Start the application
+CMD ["node", "app.js"]

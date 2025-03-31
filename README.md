@@ -69,6 +69,8 @@ AI Model Retraining (Improves over time using real interactions)
 
 ## Deployment Guide:
 
+Go to root/backend folder:
+
 1. Install Dependencies:
    $ npm install
 
@@ -111,6 +113,17 @@ AI Model Retraining (Improves over time using real interactions)
    - Add GCP_PROJECT_ID → Your GCP project ID. GCP_SA_KEY → GCP service account key JSON.
    - Jenkins Docker Permissions: Ensure the Jenkins agent has Docker permissions. Add Jenkins to the Docker group:sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
+
+10. To activate rasa python venv
+   - python3 -m venv rasa_env
+   - source rasa_env/bin/activate  # Linux/Mac
+   - rasa_env\Scripts\activate     # Windows
+   - pip show rasa #if installed already else pip install rasa ( note it works properly with python 3.9 and lower)
+   - rasa init --no-prompt ( Only first time)
+   - rasa train (first model)
+   - rasa run --enable-api --cors "*" --debug to start API
+
+11. You can use actions to combine Rasa’s structured NLU and dialogue management with LLM-powered generative responses
 
      
 

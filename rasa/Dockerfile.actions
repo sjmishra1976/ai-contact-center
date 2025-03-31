@@ -1,0 +1,17 @@
+# Use Rasa SDK image for custom actions
+FROM rasa/rasa-sdk:3.7.2
+
+# Set working directory
+WORKDIR /app
+
+# Copy actions files
+COPY actions /app/actions
+
+# Install dependencies
+RUN pip3 install --no-cache-dir -r /app/actions/requirements.txt
+
+# Expose action server port
+EXPOSE 5055
+
+# Run the actions server
+CMD ["rasa", "run", "actions", "--debug"]
