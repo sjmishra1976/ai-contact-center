@@ -125,6 +125,8 @@ sudo systemctl restart jenkins
 
 11. You can use actions to combine Rasa’s structured NLU and dialogue management with LLM-powered generative responses
 
+12. Using MCP server and client modules which uses LLMs and create context aware tools to be used in client server architecture makes powerful AGENTIC AI apps 
+
      
 
 

@@ -31,15 +31,20 @@ io.on("connection", (socket) => {
 
 
 
-// Rasa Fulfillment Endpoint
-app.post("/webhook", async (req, res) => {
+//agentic ai MCP Server based endpoint call from MCP client
+
+
+
+;// Rasa Fulfillment Endpoint
+app.post("/webhook-rasa", async (req, res) => {
     try {
         const message = req.body.query;
         const rasaResponse = await axios.post("http://localhost:5005/webhooks/rest/webhook", {
             sender: "user",
             message: message
-        });
+        })
 
+        console.log("response:"+ rasaResponse.data);
         const responseText = rasaResponse.data.map((msg) => msg.text).join("\n");
         io.emit("bot_response", responseText);
         res.json({ response: responseText });
