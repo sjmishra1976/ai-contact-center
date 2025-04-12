@@ -1,6 +1,7 @@
 // app.js - Main Express.js Server
 const express = require("express");
 const bodyParser = require("body-parser");
+const mcpHandler = require("./mcp/mcpHandler");
 const dialogflowHandler = require("./dialogflowHandler");
 //const twilioHandler = require("./twilioHandler");
 const crmIntegration = require("./crmIntegration");
@@ -17,6 +18,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+//app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../frontend/public")));
 
@@ -29,13 +31,23 @@ io.on("connection", (socket) => {
     });
 });
 
-
-
 //agentic ai MCP Server based endpoint call from MCP client
+app.post("/webhook", async (req, res) => {
+    try {
+        const user_input = req.body.query;
+        console.log("User Query :", user_input);
+        const reply = await mcpHandler.handleMCPMessage(user_input, "webhook",  "basic_query");
+        io.emit("bot_response", reply.response);
+        res.json({ response: reply.response });
+        console.log("reply response:"+ reply.response);
+    }catch (error) {
+        console.error("Error fetching data from mcp server:", error);
+        res.status(500).send({ error: "Error fetching data from mcp server" });
+    }
+});
+  
 
-
-
-;// Rasa Fulfillment Endpoint
+// Rasa Fulfillment Endpoint
 app.post("/webhook-rasa", async (req, res) => {
     try {
         const message = req.body.query;
