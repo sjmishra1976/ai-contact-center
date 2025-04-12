@@ -1,5 +1,6 @@
 # ai-contact-center
 ## 📌 Key Features in the Repo
+### ✅ ollama based model communication with MCP and tools from a chat bot client
 ### ✅ AI Chatbot with Dialogflow CX – Handles customer queries
 ### ✅ CRM Integration (Salesforce/Zendesk) – Retrieves order details
 ### ✅ Live Agent Escalation (Twilio Flex) – Transfers calls/chats when needed
@@ -127,7 +128,8 @@ sudo systemctl restart jenkins
 
 12. Using MCP server and client modules which uses LLMs and create context aware tools to be used in client server architecture makes powerful AGENTIC AI apps 
    - under backed/mcp/mcpHandler.js has methods to use some basic tools and llama model locally installed to demonstrate usage of tools association and basic tool routing
-   - You will need to install ollama binaries on local and install llama3.2 model, you have option of creating own model from model file and use same in code. ollama is node sdk client used for it. It uses chat api, check https://www.npmjs.com/package/ollama for all other APIs available.
+   - You will need to install ollama binaries on local and install llama3.2 model, you have option of creating own model from model file and use same in code. ollama is node sdk
+     client used for it. It uses chat api, check https://www.npmjs.com/package/ollama for all other APIs available.
 
      
 
