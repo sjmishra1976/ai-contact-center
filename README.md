@@ -130,6 +130,7 @@ sudo systemctl restart jenkins
    - under backed/mcp/mcpHandler.js has methods to use some basic tools and llama model locally installed to demonstrate usage of tools association and basic tool routing
    - You will need to install ollama binaries on local and install llama3.2 model, you have option of creating own model from model file and use same in code. ollama is node sdk
      client used for it. It uses chat api, check https://www.npmjs.com/package/ollama for all other APIs available.
+   -  One can use open ai sdk also, can configure base url pointing to local model running on olllama const openai = new OpenAI({  baseURL: 'http://localhost:11434/v1', apiKey: process.env.OPENAI_API_KEY }); where OPENAI_API_KEY would be 'ollama' which is not really used but needed for compatibility 
 
      
 
